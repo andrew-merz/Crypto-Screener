@@ -12,12 +12,12 @@ export function numberWithCommas(x) {
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
   const { currency } = CryptoState();
-
+  const { symbol } = CryptoState();
   const fetchTrending = async () => {
     const { data } = await axios.get(TrendingCoins(currency));
     setTrending(data);
   };
-  console.log(trending);
+
   useEffect(() => {
     fetchTrending();
     // eslint-disable-next-line
@@ -46,12 +46,18 @@ const Carousel = () => {
         <span>
           {coin?.symbol}
           &nbsp;
-          <span>
+          <span
+            style={{
+              color: profit > 0 ? "#00FF00" : "red",
+              fontWeight: 500,
+            }}
+          >
             {profit && "+"}
             {coin?.price_change_percentage_24h?.toFixed(2)}%
           </span>
         </span>
         <span style={{ fontSize: 22, fontWeight: 500 }}>
+          {symbol}
           {numberWithCommas(coin?.current_price.toFixed(2))}
         </span>
       </Link>
