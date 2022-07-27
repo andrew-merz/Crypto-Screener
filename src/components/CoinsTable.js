@@ -1,6 +1,7 @@
 import {
   LinearProgress,
   Table,
+  TableBody,
   TableCell,
   TableContainer,
   TableHead,
@@ -11,6 +12,7 @@ import {
 import { Container } from "@mui/system";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
 
@@ -19,6 +21,7 @@ const CoinsTable = () => {
   // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
   const { currency } = CryptoState();
 
   const fetchCoins = async () => {
@@ -32,6 +35,14 @@ const CoinsTable = () => {
     fetchCoins();
     // eslint-disable-next-line
   }, [currency]);
+
+  const handleSearch = () => {
+    return coins.filter(
+      (coin) =>
+        coin.name.toLowerCase().includes(search) ||
+        coin.symbol.toLowerCase().includes(search)
+    );
+  };
 
   return (
     <Container style={{ textAlign: "center" }}>
@@ -64,6 +75,32 @@ const CoinsTable = () => {
                 ))}
               </TableRow>
             </TableHead>
+            <TableBody>
+              {handleSearch().map((row) => {
+                const profit = row.price_change_percentage_24h > 0;
+
+                return (
+                  <TableRow
+                    onClick={() => navigate(`/coins/${row.id}`)}
+                    style={{}}
+                    key={row.name}
+                  >
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      styles={{ display: "flex", gap: 15 }}
+                    >
+                      <img
+                        src={row?.image}
+                        alt={row.name}
+                        height="50"
+                        style={{ marginBottom: 10 }}
+                      />
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
           </Table>
         )}
       </TableContainer>
