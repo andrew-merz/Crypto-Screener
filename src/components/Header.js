@@ -13,7 +13,7 @@ import { CryptoState } from "../CryptoContext";
 const Header = () => {
   const navigate = useNavigate();
   const { currency, setCurrency } = CryptoState();
-  console.log(currency);
+
   return (
     <AppBar color="transparent" position="static">
       <Container>
