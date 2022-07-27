@@ -8,10 +8,12 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { CryptoState } from "../CryptoContext";
 
 const Header = () => {
   const navigate = useNavigate();
-
+  const { currency, setCurrency } = CryptoState();
+  console.log(currency);
   return (
     <AppBar color="transparent" position="static">
       <Container>
@@ -29,7 +31,11 @@ const Header = () => {
           >
             Crypto-Screener
           </Typography>
-          <Select style={{ width: 100, height: 40, marginRight: 15 }}>
+          <Select
+            style={{ width: 100, height: 40, marginRight: 15 }}
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+          >
             <MenuItem value={"USD"}>USD</MenuItem>
             <MenuItem value={"CNY"}>CNY</MenuItem>
             <MenuItem value={"RUB"}>RUB</MenuItem>
