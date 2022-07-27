@@ -5,6 +5,10 @@ import { TrendingCoins } from "../../config/api";
 import AliceCarousel from "react-alice-carousel";
 import { Link } from "react-router-dom";
 
+export function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
   const { currency } = CryptoState();
@@ -22,7 +26,17 @@ const Carousel = () => {
   const items = trending.map((coin) => {
     let profit = coin.price_change_percentage_24h >= 0;
     return (
-      <Link to={`/coins/${coin.id}`}>
+      <Link
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          cursor: "pointer",
+          textTransform: "uppercase",
+          color: "white",
+        }}
+        to={`/coins/${coin.id}`}
+      >
         <img
           src={coin?.image}
           alt={coin.name}
@@ -33,8 +47,12 @@ const Carousel = () => {
           {coin?.symbol}
           &nbsp;
           <span>
-            {profit && "+"} {coin?.price_change_percentage_24h?.toFixed(2)}%
+            {profit && "+"}
+            {coin?.price_change_percentage_24h?.toFixed(2)}%
           </span>
+        </span>
+        <span style={{ fontSize: 22, fontWeight: 500 }}>
+          {numberWithCommas(coin?.current_price.toFixed(2))}
         </span>
       </Link>
     );
