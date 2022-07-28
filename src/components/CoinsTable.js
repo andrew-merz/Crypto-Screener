@@ -15,6 +15,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
+import { numberWithCommas, Carousel } from "./Banner/Carousel";
 
 const CoinsTable = () => {
   const [coins, setCoins] = useState([]);
@@ -22,7 +23,7 @@ const CoinsTable = () => {
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-  const { currency } = CryptoState();
+  const { currency, symbol } = CryptoState();
 
   const fetchCoins = async () => {
     setLoading(true);
@@ -96,6 +97,29 @@ const CoinsTable = () => {
                         height="50"
                         style={{ marginBottom: 10 }}
                       />
+                      <div style={{ display: "flex", flexDirection: "column" }}>
+                        <span
+                          style={{ textTransform: "uppercase", fontSize: 22 }}
+                        >
+                          {row.symbol}
+                        </span>
+                        <span style={{ color: "darkgrey" }}>{row.name}</span>
+                      </div>
+                    </TableCell>
+                    <TableCell align="right">
+                      {symbol}
+                      {""}
+                      {numberWithCommas(row.current_price.toFixed(2))}
+                    </TableCell>
+                    <TableCell
+                      align="right"
+                      style={{
+                        color: profit > 0 ? "#00FF00" : "red",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {profit && "+"}
+                      {row.price_change_percentage_24h.toFixed(2)}%
                     </TableCell>
                   </TableRow>
                 );
