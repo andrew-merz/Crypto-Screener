@@ -15,7 +15,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
-import { numberWithCommas, Carousel } from "./Banner/Carousel";
+import { numberWithCommas } from "./Banner/Carousel";
 
 const CoinsTable = () => {
   const [coins, setCoins] = useState([]);
@@ -65,15 +65,17 @@ const CoinsTable = () => {
           <Table>
             <TableHead style={{ backgroundColor: "#00FF00" }}>
               <TableRow>
-                {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
-                  <TableCell
-                    style={{ color: "black", fontWeight: "600" }}
-                    key={head}
-                    align={head === "Coin" ? "" : "right"}
-                  >
-                    {head}
-                  </TableCell>
-                ))}
+                {["Coin", "Current Price", "24h Change", "Market Cap"].map(
+                  (head) => (
+                    <TableCell
+                      style={{ color: "black", fontWeight: "600" }}
+                      key={head}
+                      align={head === "Coin" ? "" : "right"}
+                    >
+                      {head}
+                    </TableCell>
+                  )
+                )}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -83,13 +85,17 @@ const CoinsTable = () => {
                 return (
                   <TableRow
                     onClick={() => navigate(`/coins/${row.id}`)}
-                    style={{}}
+                    style={{
+                      backgroundColor: "#16171a",
+                      cursor: "pointer",
+                      "&hover": { backgroundColor: "#131111" },
+                    }}
                     key={row.name}
                   >
                     <TableCell
                       component="th"
                       scope="row"
-                      styles={{ display: "flex", gap: 15 }}
+                      style={{ display: "flex", gap: 15 }}
                     >
                       <img
                         src={row?.image}
@@ -120,6 +126,12 @@ const CoinsTable = () => {
                     >
                       {profit && "+"}
                       {row.price_change_percentage_24h.toFixed(2)}%
+                    </TableCell>
+                    <TableCell align="right">
+                      {" "}
+                      {symbol}{" "}
+                      {numberWithCommas(row.market_cap.toString().slice(0, -6))}
+                      M
                     </TableCell>
                   </TableRow>
                 );
