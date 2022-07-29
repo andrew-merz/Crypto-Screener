@@ -5,7 +5,8 @@ import { CryptoState } from "../CryptoContext";
 import { SingleCoin } from "../config/api";
 import CoinInfo from "../components/CoinInfo";
 import styled from "@emotion/styled";
-
+import { Typography } from "@mui/material";
+import parse from "html-react-parser";
 const CoinPage = () => {
   const { id } = useParams();
   const [coin, setCoin] = useState();
@@ -43,7 +44,47 @@ const CoinPage = () => {
   return (
     <Root>
       <Sidebar>
-        SideBar
+        <img
+          src={coin?.image.large}
+          alt={coin?.name}
+          height="200"
+          style={{ marginBottom: 20 }}
+        />
+        <Typography
+          variant="h2"
+          style={{ fontWeight: "bold", marginBottom: 20 }}
+        >
+          {coin?.name}
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          style={{
+            width: "100%",
+            padding: 25,
+            paddingBottom: 15,
+            paddingTop: 0,
+            textAlign: "justify",
+          }}
+        >
+          {parse(`${coin?.description.en.split(". ")[0]}`)}
+        </Typography>
+        <div>
+          <span style={{ display: "flex" }}>
+            <Typography variant="h5">Rank:</Typography>
+            &nbsp; &nbsp;
+            <Typography variant="h5">{coin?.market_cap_rank}</Typography>
+          </span>
+          <span style={{ display: "flex" }}>
+            <Typography variant="h5">Current Price: </Typography>
+            &nbsp; &nbsp;
+            <Typography variant="h5">{symbol}</Typography>
+          </span>
+          <span style={{ display: "flex" }}>
+            <Typography variant="h5">Rank:</Typography>
+            &nbsp; &nbsp;
+            <Typography variant="h5">{coin?.market_cap_rank}</Typography>
+          </span>
+        </div>
         <CoinInfo coin={coin} />
       </Sidebar>
     </Root>
