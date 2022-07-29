@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
 import { SingleCoin } from "../config/api";
 import CoinInfo from "../components/CoinInfo";
+import styled from "@emotion/styled";
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -20,12 +21,32 @@ const CoinPage = () => {
     fetchCoin();
   }, []);
 
+  const Root = styled("div")(({ theme }) => ({
+    display: "flex",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      alignItems: "center",
+    },
+  }));
+  const Sidebar = styled("div")(({ theme }) => ({
+    width: "30%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: 25,
+    borderRight: "2px solid grey",
+  }));
+
   return (
-    <div>
-      <div>
+    <Root>
+      <Sidebar>
+        SideBar
         <CoinInfo coin={coin} />
-      </div>
-    </div>
+      </Sidebar>
+    </Root>
   );
 };
 
