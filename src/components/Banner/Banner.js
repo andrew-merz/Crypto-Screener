@@ -7,7 +7,7 @@ export default function Banner() {
   return (
     <Paper
       style={{
-        backgroundImage: `url(./banner.jpg)`,
+        backgroundImage: `url(./banner7.jpeg)`,
       }}
     >
       <Container
