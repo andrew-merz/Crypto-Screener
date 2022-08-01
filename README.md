@@ -4,10 +4,15 @@ Crypto Screener is a React-based front-end application used to view real-time in
 
 Screenshots: 
 ![Screen Shot 2022-08-01 at 5 12 14 PM](https://user-images.githubusercontent.com/100104797/182248686-0fc5a70c-318b-4390-8de1-0ac878642b1e.png)
+
+
 ![Screen Shot 2022-08-01 at 5 13 18 PM](https://user-images.githubusercontent.com/100104797/182248703-de50d871-1653-4c4a-b53e-105e27c77245.png)
+
+
 ![Screen Shot 2022-08-01 at 5 14 08 PM](https://user-images.githubusercontent.com/100104797/182248713-7a6247f7-a602-4935-8933-935157fc31c6.png)
 
 Technologies Used: React.JS | Material UI | Chart.JS | Coin Gecko API
+
 
 Getting Started:(https://cryptocurrency-screener.netlify.app/) Click on this link to get started:
 
