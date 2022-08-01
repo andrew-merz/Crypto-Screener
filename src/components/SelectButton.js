@@ -23,7 +23,9 @@ const SelectButton = ({ children, selected, onClick }) => {
         backgroundColor: selected ? "#03DAC6" : "",
         color: selected ? "black" : "",
         fontWeight: selected ? 600 : 500,
+        // eslint-disable-next-line
         backgroundColor: isHovering ? "#03DAC6" : "",
+        // eslint-disable-next-line
         color: isHovering ? "black" : "",
 
         width: "22%",

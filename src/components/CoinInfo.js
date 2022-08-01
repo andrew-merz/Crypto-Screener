@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { HistoricalChart } from "../config/api";
 import { CryptoState } from "../CryptoContext";
 import styled from "@emotion/styled";
-import { CircularProgress } from "@mui/material";
+
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
