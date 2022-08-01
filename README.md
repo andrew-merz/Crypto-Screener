@@ -3,7 +3,9 @@ Welcome to Crypto-Screener!
 Crypto Screener is a React-based front-end application used to view real-time information about crypto currencies. Using the Coin Gecko API, users can view trending coins, search for specific coins, and view the coins historical data in a chart format. Users can view detailed information about a coin by searching for it in the search bar and clicking on the coin or by clicking through the pagination feature at the bottom of the homepage.
 
 Screenshots: 
-![Screen Shot 2022-08-01 at 5 12 14 PM](https://user-images.githubusercontent.com/100104797/182248686-0fc5a70c-318b-4390-8de1-0ac878642b1e.png)
+
+![Screen Shot 2022-08-01 at 5 32 49 PM](https://user-images.githubusercontent.com/100104797/182250305-b5939d7d-dbe2-4af4-ad23-6b5067bb2e3b.png)
+
 
 
 ![Screen Shot 2022-08-01 at 5 13 18 PM](https://user-images.githubusercontent.com/100104797/182248703-de50d871-1653-4c4a-b53e-105e27c77245.png)
